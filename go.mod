@@ -1,3 +1,3 @@
-module tp/httpserver
+module tp/miniapi
 
 go 1.17
