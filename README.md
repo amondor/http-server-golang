@@ -9,5 +9,9 @@ run main go
 ```
 or 
 ```bash
-run build  ./miniapi
+run build  
+```
+then
+```bash
+./miniapi
 ```
