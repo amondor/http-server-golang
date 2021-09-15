@@ -10,6 +10,14 @@ import (
 
 //list all entries
 
+func listEntry(w http.ResponseWriter, req *http.Request) {
+	body, err := os.ReadFile("data.txt")
+	if err != nil {
+		log.Fatalf("unable to read file: %v", err)
+	}
+	fmt.Fprintf(w, string(body))
+}
+
 //  fill data.txt
 func addEntry(author, message string) {
 	f, err := os.OpenFile("data.txt", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
@@ -56,6 +64,7 @@ func main() {
 
 	http.HandleFunc("/", index)
 	http.HandleFunc("/add", add)
+	http.HandleFunc("/listEntry", listEntry)
 	fmt.Println("Server started on http://localhost:4567")
 
 	if err := http.ListenAndServe(":4567", nil); err != nil {
